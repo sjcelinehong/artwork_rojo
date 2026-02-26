@@ -239,8 +239,8 @@ const LoveBubbleItem: React.FC<LoveBubbleItemProps> = ({
           </div>
           <div className={`flex-grow ${isLeftArtwork ? "text-left" : "text-right"}`}>
             <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{art.artist}</div>
-            {art.description && (
-              <div className="mt-2 text-sm text-slate-500 font-light leading-tight">{art.description}</div>
+            {art.subTitle && (
+              <div className="mt-2 text-sm text-slate-500 font-light leading-tight">{art.subTitle}</div>
             )}
           </div>
         </div>

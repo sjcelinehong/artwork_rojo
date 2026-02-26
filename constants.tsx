@@ -36,7 +36,7 @@ export const ARTWORKS: ArtPiece[] = [
     section: 'Novel',
     title: '만화가가 마을을 떠났다.',
     artist: 'MAGIO (@rizza____)',
-    description: '로한과 죠스케가 사랑을 확인하는 내용을 쓰고 싶었습니다.',
+    subTitle: '로한과 죠스케가 사랑을 확인하는 내용을 쓰고 싶었습니다.',
     story: `오래된 먼지 냄새와 때가 낀 기어 레버. 핸들의 무늬에 낀 거무튀튀한 얼룩을 내려다보다 시선을 돌린다.
 티 나지 않게 살핀 옆자리에는 옆모습만이 살짝씩 보이는 청소년 정도의 남성이 앉아 있다. 말없이 창밖을 바라보는 그는 고속도로를 지나 새로운 도시로 입성할 때까지 말 한마디, 아니 입 한 번 열지 않았다.
 내가 불편한 걸까, 아무래도 그렇겠지. 한 차례의 자문자답과 함께 씁쓸함이 밀려온다. 내가 많은 걸 바라는 걸까?
@@ -83,7 +83,7 @@ export const ARTWORKS: ArtPiece[] = [
     section: 'Novel',
     title: 'Midnight Chapter',
     artist: 'Isobel Grey',
-    description: 'Moody blues and sharp whites depicting a desk illuminated only by a single candle.',
+    subTitle: 'Moody blues and sharp whites depicting a desk illuminated only by a single candle.',
     story: 'The moment of inspiration that comes at 3 AM, when the world is asleep and the boundary between fiction and reality is at its thinnest.',
     thumbnail: 'https://images.unsplash.com/photo-1516414447565-b14be0adf13e?auto=format&fit=crop&q=80&w=800'
   },
@@ -92,7 +92,7 @@ export const ARTWORKS: ArtPiece[] = [
     section: 'Novel',
     title: 'Untitled',
     artist: 'MAGIO',
-    description: 'A story about longing.',
+    subTitle: 'A story about longing.',
     story: 'I miss Rohan.',
     thumbnail: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=800'
   },
@@ -102,7 +102,7 @@ export const ARTWORKS: ArtPiece[] = [
     section: 'Art',
     title: 'Chromatic Silence',
     artist: 'Marcus Klein',
-    description: 'A study of texture and void, featuring heavy impasto and minimalist composition.',
+    subTitle: 'A study of texture and void, featuring heavy impasto and minimalist composition.',
     story: 'Art doesn\'t always need to speak; sometimes it just needs to exist. This piece is a meditation on the physical presence of paint on canvas and the emotions it evokes without imagery.',
     thumbnail: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=800'
   },
@@ -111,7 +111,7 @@ export const ARTWORKS: ArtPiece[] = [
     section: 'Art',
     title: 'The Sculptor\'s Dream',
     artist: 'Ava Moretti',
-    description: 'A surrealist piece showing stone hands carving themselves out of a mountain.',
+    subTitle: 'A surrealist piece showing stone hands carving themselves out of a mountain.',
     story: 'A tribute to the act of creation itself—the struggle to bring form out of chaos and the realization that the artist is shaped by the work as much as the work is shaped by them.',
     thumbnail: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=800'
   }

@@ -61,7 +61,7 @@ const ArtDetail: React.FC<Props> = ({ art, onBack }) => {
             </div>
 
             <div className="mt-6 pt-6 border-t border-slate-200/80">
-              <p className="font-light leading-relaxed text-slate-700 whitespace-pre-wrap">{(art as any).description || (art as any).story || "No description available."}</p>
+              <p className="font-light leading-relaxed text-slate-700 whitespace-pre-wrap">{(art as any).subTitle || (art as any).story || "No subtitle available."}</p>
             </div>
           </div>
         </div>

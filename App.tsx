@@ -184,19 +184,19 @@ const App: React.FC = () => {
                   id: "Novel",
                   image:
                     "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=800",
-                  desc: "Explorations of human connection and heart.",
+                  subTitle: "Explorations of human connection and heart.",
                 },
                 {
                   id: "Art",
                   image:
                     "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=800",
-                  desc: "Stories caught in the ink of imagination.",
+                  subTitle: "Stories caught in the ink of imagination.",
                 },
                 {
                   id: "Love",
                   image:
                     "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?auto=format&fit=crop&q=80&w=800",
-                  desc: "The pure expression of form and color.",
+                  subTitle: "The pure expression of form and color.",
                 },
               ].map((cat, i) => (
                 <div
@@ -215,7 +215,7 @@ const App: React.FC = () => {
                   </div>
                   <div className="space-y-3">
                     <h3 className="text-3xl font-bold playfair text-slate-900">{cat.id}</h3>
-                    <p className="text-slate-500 font-light leading-relaxed">{cat.desc}</p>
+                    <p className="text-slate-500 font-light leading-relaxed">{cat.subTitle}</p>
                     <div className="pt-4 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600">
                       Enter Gallery{" "}
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
@@ -290,9 +290,9 @@ const App: React.FC = () => {
                       <h2 className="text-5xl md:text-7xl font-bold playfair text-slate-900 mt-3">
                         {(selectedNovel as any).title ?? "Untitled"}
                       </h2>
-                      {selectedNovel.description && (
+                      {selectedNovel.subTitle && (
                         <p className="mt-4 text-slate-500 text-lg font-light max-w-3xl leading-relaxed">
-                          {selectedNovel.description}
+                          {selectedNovel.subTitle}
                         </p>
                       )}
                     </div>
@@ -316,12 +316,12 @@ const App: React.FC = () => {
                             <div className="mt-1">{selectedNovel.artist}</div>
                           </div>
 
-                          {selectedNovel.description && (
+                          {selectedNovel.subTitle && (
                             <div>
                               <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                                Description
+                                subTitle
                               </div>
-                              <div className="mt-1 leading-relaxed">{selectedNovel.description}</div>
+                              <div className="mt-1 leading-relaxed">{selectedNovel.subTitle}</div>
                             </div>
                           )}
                         </div>

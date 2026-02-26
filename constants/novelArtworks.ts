@@ -6,7 +6,7 @@ export const NOVEL_ARTWORKS: NonLoveArtPiece[] = [
     section: 'Novel',
     title: '만화가가 마을을 떠났다.',
     artist: 'MAGIO (@rizza____)',
-    description: '로한과 죠스케가 사랑을 확인하는 내용을 쓰고 싶었습니다.',
+    subTitle: '로한과 죠스케가 사랑을 확인하는 내용을 쓰고 싶었습니다.',
     story:
       'g4Jk9fVqzT8bWmN2xR0hYpL1sEaU7cC5tZ6oQwX3vIiOeK4uBnPzYqLrS9mHjTfVbGxCkLqPp7wErT0yUiOpAsDfGhJkLzXcVbN7mQwErTyUiOpAsDfGhJkLmNzXcVbQwErTyUiOp',
     thumbnail:
@@ -17,7 +17,7 @@ export const NOVEL_ARTWORKS: NonLoveArtPiece[] = [
     section: 'Novel',
     title: 'Midnight Chapter',
     artist: 'Isobel Grey',
-    description:
+    subTitle:
       'Moody blues and sharp whites depicting a desk illuminated only by a single candle.',
     story:
       'zP1xR9mN6sT4qW8bL0vC3hY2uK7aE5oF9gH2jS4dL6pR0tV8yQ1wX3nM5kZ7cB9vU2iO4eP6aS8dF0gH2jK4lQ9wErTyUiOpAsDfGhJkLmNzXcVbQwErTyUiOpZxCvBnM',

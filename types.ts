@@ -17,7 +17,7 @@ export type LoveArtPiece = {
   text?: string;
   thumbnail?: string;
   story?: string;
-  description?: string;
+  subTitle?: string;
 };
 
 /** ✅ Novel/Art 공통(기존 구조 유지) */
@@ -26,7 +26,7 @@ export type NonLoveArtPiece = {
   section: 'Novel' | 'Art';
   title: string;
   artist: string;
-  description: string;
+  subTitle: string;
   story: string;
   thumbnail: string;
 };
