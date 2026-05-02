@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { ArtPiece, Page, SectionType } from "./types";
-import { ARTWORKS } from "./constants";
+import { ARTWORKS } from "./constants/index";
 import GalleryBackground from "./components/GalleryBackground";
 import ArtCard from "./components/ArtCard";
 import ArtDetail from "./components/ArtDetail";
