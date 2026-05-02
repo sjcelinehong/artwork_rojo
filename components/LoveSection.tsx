@@ -37,18 +37,25 @@ const Typewriter: React.FC<{
   const prevTextRef = useRef<string>("");
   const displayedRef = useRef<string>("");
 
-  const clearTimer = () => {
+  const clearTimer = useCallback(() => {
     if (timerRef.current) {
       window.clearInterval(timerRef.current);
       timerRef.current = null;
     }
     typingRef.current = false;
-  };
+  }, []);
 
-  // displayedText 동기화(렌더용 state + 로직용 ref 분리)
+  // displayedText 동기화 + 타이핑 완료 감지
   useEffect(() => {
     displayedRef.current = displayedText;
-  }, [displayedText]);
+    if (typingRef.current && displayedText === text && text.length > 0) {
+      clearTimer();
+      if (!doneCalledRef.current) {
+        doneCalledRef.current = true;
+        onDone?.();
+      }
+    }
+  }, [displayedText, text, onDone, clearTimer]);
 
   useEffect(() => {
     const prevText = prevTextRef.current;
@@ -104,12 +111,6 @@ const Typewriter: React.FC<{
       setDisplayedText((prev) => {
         const nextIndex = prev.length;
         if (nextIndex < text.length) return prev + text.charAt(nextIndex);
-
-        clearTimer();
-        if (!doneCalledRef.current) {
-          doneCalledRef.current = true;
-          onDone?.();
-        }
         return prev;
       });
     }, speed);
@@ -121,7 +122,7 @@ const Typewriter: React.FC<{
   return (
     <>
       {displayedText}
-      {start && !completed && <span className="inline-block ml-0.5 animate-pulse opacity-70">▍</span>}
+      {start && !completed && displayedText.length < text.length && <span className="inline-block ml-0.5 animate-pulse opacity-70">▍</span>}
     </>
   );
 };
@@ -130,10 +131,11 @@ type BubbleLineProps = {
   text: string;
   lineIdx: number;
   phase: "done" | "active";
-  onDone: () => void;
+  onDone: (lineIdx: number) => void;
 };
 
 const BubbleLine: React.FC<BubbleLineProps> = ({ text, lineIdx, phase, onDone }) => {
+  const stableOnDone = useCallback(() => onDone(lineIdx), [onDone, lineIdx]);
   const isLeft = lineIdx % 3 !== 1;
 
   const bubbleClass = isLeft
@@ -154,7 +156,7 @@ const BubbleLine: React.FC<BubbleLineProps> = ({ text, lineIdx, phase, onDone })
         {phase === "done" ? (
           <>{text}</>
         ) : (
-          <Typewriter text={text} speed={80} start={true} completed={false} onDone={onDone} />
+          <Typewriter text={text} speed={80} start={true} completed={false} onDone={stableOnDone} />
         )}
         <span className="opacity-80">&quot;</span>
       </div>
@@ -239,34 +241,34 @@ const LoveBubbleItem: React.FC<LoveBubbleItemProps> = ({
           </div>
           <div className={`flex-grow ${isLeftArtwork ? "text-left" : "text-right"}`}>
             <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{art.artist}</div>
-            {art.description && (
-              <div className="mt-2 text-sm text-slate-500 font-light leading-tight">{art.description}</div>
+            {art.subTitle && (
+              <div className="mt-2 text-sm text-slate-500 font-light leading-tight">{art.subTitle}</div>
             )}
           </div>
         </div>
 
-              <div className={`flex mt-4 ${isLeftArtwork ? "justify-start" : "justify-end"}`}>
-                <div onClick={onClick} className="cursor-pointer">
-                  <div className="space-y-4">
-                    {!doneArtwork && isActiveArtwork && !inView && (
-                      <div className="text-[11px] text-slate-400 font-light">스크롤하여 대화를 시작해요.</div>
-                    )}
-        
-                    {dialogue.slice(0, visibleCount).map((line, lineIdx) => {
-                      const isDone = doneArtwork ? true : doneLines.has(lineIdx);
-                      return (
-                        <BubbleLine
-                          key={`${art.id}-${lineIdx}`}
-                          text={line.text}
-                          lineIdx={lineIdx}
-                          phase={isDone ? "done" : "active"}
-                          onDone={() => handleLineDone(lineIdx)}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>      </div>
+        <div className={`flex mt-4 ${isLeftArtwork ? "justify-start" : "justify-end"}`}>
+          <div onClick={onClick} className="cursor-pointer">
+            <div className="space-y-4">
+              {!doneArtwork && isActiveArtwork && !inView && (
+                <div className="text-[11px] text-slate-400 font-light">스크롤하여 대화를 시작해요.</div>
+              )}
+              {dialogue.slice(0, visibleCount).map((line, lineIdx) => {
+                const isDone = doneArtwork ? true : doneLines.has(lineIdx);
+                return (
+                  <BubbleLine
+                    key={`${art.id}-${lineIdx}`}
+                    text={line.text}
+                    lineIdx={lineIdx}
+                    phase={isDone ? "done" : "active"}
+                    onDone={handleLineDone}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

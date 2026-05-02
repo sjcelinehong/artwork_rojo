@@ -1,6 +1,6 @@
 
 {
   "name": "The Painted Word - Art Gallery",
-  "description": "An immersive digital gallery showcasing atmospheric artworks categorized by emotion and narrative.",
+  "subTitle": "An immersive digital gallery showcasing atmospheric artworks categorized by emotion and narrative.",
   "requestFramePermissions": []
 }
