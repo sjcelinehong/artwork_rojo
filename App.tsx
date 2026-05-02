@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { ArtPiece, Page, SectionType } from "./types";
 import { ARTWORKS } from "./constants";
-import { STORY_OVERRIDE_BY_ID } from "./constants/overrides";
 import GalleryBackground from "./components/GalleryBackground";
 import ArtCard from "./components/ArtCard";
 import ArtDetail from "./components/ArtDetail";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import LoveSection from "./components/LoveSection";
+
+type NovelArtPiece = Extract<ArtPiece, { section: "Novel" }>;
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>("INDEX");
@@ -22,25 +23,22 @@ const App: React.FC = () => {
     setSelectedArt(null);
   }, [selectedSection]);
 
-  // ✅ 섹션 데이터(정규화 비교로 카드 안 보이는 문제 방지)
+  // ✅ 섹션 데이터
   const sectionArt = useMemo(() => {
-    const norm = (v: any) => String(v ?? "").trim().toLowerCase();
-    const target = norm(selectedSection);
-    if (!target) return [];
-
-    if (target === "love") {
-      const overrideIds = Object.keys(STORY_OVERRIDE_BY_ID);
-      return ARTWORKS.filter((a) => overrideIds.includes(String(a.id)));
-    }
-
-    return ARTWORKS.filter((a) => norm((a as any).section) === target);
+    if (!selectedSection) return [];
+    return ARTWORKS.filter((art) => art.section === selectedSection);
   }, [selectedSection]);
+
+  const novelArt = useMemo(
+    () => sectionArt.filter((art): art is NovelArtPiece => art.section === "Novel"),
+    [sectionArt],
+  );
 
   // ✅ Novel 풀스크린에서 보여줄 단일 작품
   const selectedNovel = useMemo(() => {
     if (!novelSelectedId) return null;
-    return sectionArt.find((a) => String(a.id) === novelSelectedId) ?? null;
-  }, [novelSelectedId, sectionArt]);
+    return novelArt.find((a) => String(a.id) === novelSelectedId) ?? null;
+  }, [novelSelectedId, novelArt]);
 
   const navigateToIntro = () => setCurrentPage("INTRO");
 
@@ -255,7 +253,7 @@ const App: React.FC = () => {
                 {/* ✅ Novel: 목록 */}
                 {!novelSelectedId && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
-                    {sectionArt.map((art, idx) => (
+                    {novelArt.map((art, idx) => (
                       <div
                         key={art.id}
                         className="animate-in fade-in slide-in-from-bottom duration-1000"
@@ -288,7 +286,7 @@ const App: React.FC = () => {
                         {selectedNovel.artist}
                       </div>
                       <h2 className="text-5xl md:text-7xl font-bold playfair text-slate-900 mt-3">
-                        {(selectedNovel as any).title ?? "Untitled"}
+                        {selectedNovel.title}
                       </h2>
                       {selectedNovel.subTitle && (
                         <p className="mt-4 text-slate-500 text-lg font-light max-w-3xl leading-relaxed">
@@ -300,7 +298,7 @@ const App: React.FC = () => {
                     {/* ✅ 좌: 에세이 / 우: 정보 */}
                     <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12">
                       <article className="text-slate-800 text-lg leading-relaxed whitespace-pre-wrap font-light">
-                        {(selectedNovel as any).story}
+                        {selectedNovel.story}
                       </article>
 
                       <aside className="lg:sticky lg:top-28 self-start rounded-3xl border border-slate-100 bg-white/70 backdrop-blur p-8">
