@@ -397,7 +397,7 @@ export const ARTWORKS: ArtPiece[] = [
     artist: '김윤지',
     subTitle: '',
     story: '',
-    thumbnail: '/asset/김윤지님.jpg'
+    thumbnail: './asset/김윤지님.jpg'
   },
   {
     id: 'a2',
@@ -406,7 +406,7 @@ export const ARTWORKS: ArtPiece[] = [
     artist: '깝싹',
     subTitle: '',
     story: '',
-    thumbnail: '/asset/깝싹님.jpg'
+    thumbnail: './asset/깝싹님.jpg'
   },
   {
     id: 'a3',
@@ -415,7 +415,7 @@ export const ARTWORKS: ArtPiece[] = [
     artist: '돈까스망치',
     subTitle: '',
     story: '',
-    thumbnail: '/asset/돈까스망치님.png'
+    thumbnail: './asset/돈까스망치님.png'
   },
   {
     id: 'a4',
@@ -424,7 +424,7 @@ export const ARTWORKS: ArtPiece[] = [
     artist: '밈지',
     subTitle: '',
     story: '',
-    thumbnail: '/asset/밈지님.png'
+    thumbnail: './asset/밈지님.png'
   },
   {
     id: 'a5',
@@ -433,7 +433,7 @@ export const ARTWORKS: ArtPiece[] = [
     artist: '앗',
     subTitle: '',
     story: '',
-    thumbnail: '/asset/앗님.jpg'
+    thumbnail: './asset/앗님.jpg'
   },
   {
     id: 'a6',
@@ -442,7 +442,7 @@ export const ARTWORKS: ArtPiece[] = [
     artist: '왈루',
     subTitle: '',
     story: '',
-    thumbnail: '/asset/왈루님.png'
+    thumbnail: './asset/왈루님.png'
   },
   {
     id: 'a7',
@@ -451,7 +451,7 @@ export const ARTWORKS: ArtPiece[] = [
     artist: '이온',
     subTitle: '',
     story: '',
-    thumbnail: '/asset/이온님.jpg'
+    thumbnail: './asset/이온님.jpg'
   },
   {
     id: 'a8',
@@ -460,6 +460,6 @@ export const ARTWORKS: ArtPiece[] = [
     artist: '쿠야',
     subTitle: '',
     story: '',
-    thumbnail: '/asset/큐야님.png'
+    thumbnail: './asset/큐야님.png'
   }
 ];
